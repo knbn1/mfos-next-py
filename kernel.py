@@ -7,6 +7,7 @@ original mfos-next: https://github.com/knbn1/mfos-next
 '''
 
 import os
+import socket
 import importlib
 
 # set a whole bunch of variables
