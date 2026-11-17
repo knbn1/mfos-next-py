@@ -6,10 +6,7 @@ by knbnoob1
 original mfos-next: https://github.com/knbn1/mfos-next
 '''
 
-import sys
 import os
-import socket
-import datetime
 import importlib
 
 # set a whole bunch of variables
