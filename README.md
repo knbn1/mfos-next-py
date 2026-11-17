@@ -6,13 +6,15 @@ Originally it was written with Batch but it was a pain to debug and it not being
 
 Having switched to Linux for well over 2 years now, I think it's about time I left Windows behind and created a more open MicroflashOS.
 
-## What has been implemented:
+## Progress Report
+
+What has been implemented:
 
 - Most of the kernel (all of `cmd.mcm`'s functions are now integrated into `kernel.py`) 
 - Most of the core utilities sysmodule (`core.mcm`), this includes commands such as `about`, `clock` and `shutdown`
 - Most of the file management tools (`fsutils.mcm`), things like `mkdir`, `rmdir`, `cd`
 
-## What has not:
+What has not:
 
 - Functions for user creation, deletion and switching (`userspace.mcm`)
 - MicroflashOS Next Package Manager (`neopkg.mcm`) and by extension all packages in the [mfos-next-packages repository](https://github.com/knbn1/mfos-next-packages)
@@ -22,7 +24,17 @@ Having switched to Linux for well over 2 years now, I think it's about time I le
 - Other parts of `core.mcm` and `fsutils.mcm`
 - Logging and command history functions
 
-## What will not be implemented:
+What will not be implemented:
 
 - MicroflashOS Next Consolidations (`compact.mcm`) as to my knowledge there is no way to make that work yet
 - Devices (memory sectors, neopkg cache, etc)
+
+## Installation Instructions
+
+Download `kernel.py` and all other Python scripts you see in the main repository.
+
+Then run `kernel.py`. It should find all the necessary sysmodules and boot to MicroflashOS Next.
+
+## Uninstalling
+
+Delete all the Python scripts.
