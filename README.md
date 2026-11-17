@@ -20,6 +20,7 @@ Having switched to Linux for well over 2 years now, I think it's about time I le
 - Developer tools (`devtools.mcm`)
 - Help sections. Currently all help sections are hardcoded into `core.py` until I can figure out reading from files.
 - Other parts of `core.mcm` and `fsutils.mcm`
+- Logging and command history functions
 
 ## What will not be implemented:
 
