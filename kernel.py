@@ -40,6 +40,7 @@ commands = {
     "shutdown": core.shutdown,
     "help": core.help,
     "clear": core.clear,
+    "tryauth": core.tryauth,
     # fsutils sysmodule
     "list": fsutils.list,
     "rm": fsutils.rm,
@@ -74,8 +75,9 @@ while True:
         if command in commands:
             try:
                 commands[command](*args)
-            except TypeError:
-                print("A TypeError exception has occured.\nMaybe you haven't specified an argument?")
+            except TypeError as error:
+                print("A TypeError exception has occured.\nMaybe you haven't specified an argument?\n")
+                print(error)
             except Exception as error:
                 print("An unhandled exception has occurred:\n")
                 print(error)

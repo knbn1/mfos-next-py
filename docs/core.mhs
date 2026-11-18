@@ -4,4 +4,5 @@ help: Show this help screen
 about: Show some system information
 clock: Get current date and time
 clear: Clear console output
+tryauth: Trigger proctector, meant for debugging
 shutdown: Power off

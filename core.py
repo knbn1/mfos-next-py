@@ -16,18 +16,21 @@ hostname = socket.gethostname()
 
 def help():
     count_section = 0
-    for section in sections:
-        try:
-            with open(f"{helpdir}/{section}.mhs", "r") as file:
-                print(file.read())
-                count_section = count_section + 1
-        except FileNotFoundError:
-            print(f"Could not find help section {section}.mhs")
-        except Exception as error:
-            print(f"Failed to delete path {rm}!")
-            print("An unhandled exception has occurred:\n")
-            print(error)
-    print(f"Loaded {count_section} help sections")
+    if not os.path.exists(helpdir):
+        print("Help section directory does not exist!\nRedownload MicroflashOS Next and try again.")
+    else:
+        for section in sections:
+            try:
+                with open(f"{helpdir}/{section}.mhs", "r") as file:
+                    print(file.read())
+                    count_section = count_section + 1
+            except FileNotFoundError:
+                print(f"Could not find help section {section}.mhs")
+            except Exception as error:
+                print(f"Failed to delete path {rm}!")
+                print("An unhandled exception has occurred:\n")
+                print(error)
+        print(f"Loaded {count_section} help sections")
 
 def about():
     print("MicroflashOS version:", mfosVer)
@@ -46,3 +49,7 @@ def clear():
 def shutdown():
     print("Shutting down...")
     exit()
+
+def tryauth():
+    import proctector
+    proctector.auth()

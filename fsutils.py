@@ -102,7 +102,7 @@ def copy(type, source, destination):
         else:
             print(f"File {destination} already exists!")
     else:
-        print("Please specify a type.")
+        print("Please specify a type to copy: file or folder")
 
 def extract(file, destination):
     try:
@@ -113,5 +113,9 @@ def extract(file, destination):
         print("Target zip file not found!")
     except shutil.ReadError:
         print("Could not read archive! Is it in the correct .zip format?")
+    except Exception as error:
+        print(f"Failed to extract {file} to {destination}!")
+        print("An unhandled exception has occurred:\n")
+        print(error)
     else:
         print(f"Extracted contents of {file} to {destination}")
