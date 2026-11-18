@@ -26,11 +26,10 @@ for mod in mfos_modules:
     try:
         globals()[mod] = importlib.import_module(mod)
     except Exception as error:
-        print("[kmodsinit] ERROR: failed to load", mod)
-        print("[kmodsinit] ERROR:", error)
+        print(f"[kmodsinit] ERROR: failed to load sysmodule {mod}: {error}")
         exit()
     else:
-        print("[kmodsinit] INFO: loaded", mod)
+        print("[kmodsinit] INFO: loaded sysmodule", mod)
 
 # command list
 
