@@ -6,30 +6,28 @@ import socket
 import datetime
 
 mfosVer = "2026.11.18-py"
+
+sections = ["core", "fsutils"]
+helpdir = f"{os.getcwd()}/docs"
+
 user = os.getlogin()
 hostOS = os.name
 hostname = socket.gethostname()
 
-cmd_help = {
-    "help": "Show this help screen",
-    "about": "Show some system information",
-    "clock": "Get current date and time",
-    "clear": "Clear console output",
-    "shutdown": "Power off",
-    "list": "List available files and folders",
-    "cd [path]": "Change directory",
-    "mkdir [directory]": "Create a directory",
-    "rm [object]": "Delete a file/directory",
-    "rename [old name] [new name]": "Rename a file/folder",
-    "copy [file/directory] [source] [destination]": "Copy a file or folder",
-    "extract [zip file] [destination]": "Extract a zip file to a directory",
-    "home": "Revert to home/starting directory",
-    "back": "Go up one level in the directory tree"
-}
-
 def help():
-    for key, value in cmd_help.items():
-        print(f"{key}: {value}")
+    count_section = 0
+    for section in sections:
+        try:
+            with open(f"{helpdir}/{section}.mhs", "r") as file:
+                print(file.read())
+                count_section = count_section + 1
+        except FileNotFoundError:
+            print(f"Could not find help section {section}.mhs")
+        except Exception as error:
+            print(f"Failed to delete path {rm}!")
+            print("An unhandled exception has occurred:\n")
+            print(error)
+    print(f"Loaded {count_section} help sections")
 
 def about():
     print("MicroflashOS version:", mfosVer)

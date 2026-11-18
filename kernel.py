@@ -60,13 +60,9 @@ print("\nWelcome to MicroflashOS Next!\n")
 print("Available commands:", len(commands))
 print("Modules loaded:", len(mfos_modules))
 
-# set a variable for the while loop
+# command parser
 
-status = "running"
-
-# very simple parser
-
-while status == "running":
+while True:
     user_input = input(f"\n{user}@{hostname}: ")
     if user_input == "":
         print("\nInvalid command.")
