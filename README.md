@@ -49,9 +49,9 @@ Note that this time round I'm willing to sacrifice a bit of the lore for a more 
 ## Installation Instructions
 
 ### For the latest commit:
-Download `kernel.py` and all other Python scripts you see in the main repository.
+`git clone` or download the ZIP from the green Code button up top. 
 
-Then run `kernel.py`. It should find all the necessary sysmodules and boot to MicroflashOS Next.
+Extract everything, then run `kernel.py`.
 
 ### For releases:
 Download `mfos-next-py.zip` and extract it somewhere. Then run `kernel.py`.
