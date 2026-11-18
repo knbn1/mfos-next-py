@@ -19,7 +19,7 @@ What has been implemented:
 - Most of the kernel (all of `cmd.mcm`'s functions are now integrated into `kernel.py`) 
 - Most of the core utilities sysmodule (`core.mcm`), this includes commands such as `about`, `clock` and `shutdown`
 - Most of the file management tools (`fsutils.mcm`), things like `mkdir`, `rmdir`, `cd`
-- Some rudimentary checks, at some point they should be replaced with proper `try()` and `except()`
+~~- Some rudimentary checks, at some point they should be replaced with proper `try()` and `except()`~~
 
 What has not:
 
@@ -28,7 +28,7 @@ What has not:
 - MicroflashOS Protector (`proctector.mcm`), needed as an authentication procedure for critical changes
 - Developer tools (`devtools.mcm`)
 - Help sections. Currently all help sections are hardcoded into `core.py` until I can figure out reading from files.
-- Other parts of `core.mcm` and `fsutils.mcm`
+~~- Other parts of `core.mcm` and `fsutils.mcm`~~
 - Logging and command history functions
 
 What will not be implemented:
