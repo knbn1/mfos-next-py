@@ -2,6 +2,11 @@
 
 A port of [MicroflashOS Next](https://github.com/knbn1/mfos-next) to Python.
 
+> [!TIP]
+> Microflash Operating System Next (MicroflashOS Next or mfos-next) is a "fantasy operating system".
+> 
+> It is primarily centered around [the MicroflashOS lore file](https://knbn1.github.io/sitefiles/microflash/mfos-lore.txt), as a result any names mentioned in the code are references to the lore.
+
 ## Why?
 
 Originally it was written with Batch but it was a pain to debug and it not being cross-platform meant that development was limited by the underlying Windows operating system, which we all know absolutely sucks nowadays.
@@ -14,7 +19,7 @@ Also I've started to take Python classes at school and this sounds like a good p
 
 ## Progress Report
 
-What has been implemented:
+### What has been implemented:
 
 - Most of the kernel (all of `cmd.mcm`'s functions are now integrated into `kernel.py`) 
 - Core utilities (`core.mcm`), this includes commands such as `about`, `clock` and `shutdown`
@@ -22,22 +27,22 @@ What has been implemented:
 - MicroflashOS Protector (`proctector.mcm`)
 - Loading help sections with `help`
 
-What has not been but will be implemented soon:
+### What has not been but will be implemented soon:
 
 - MicroflashOS Next Consolidations (`compact.mcm`)
 
-What may not be implemented:
+### What may not be implemented:
 
 - Functions for user creation, deletion and switching (`userspace.mcm`): Not really necessary.
 - Logging and command history functions: Too much work, and will likely bloat the OS. Exception handling is more than enough.
 
-What will absolutely not be implemented:
+### What will absolutely not be implemented:
 
 - Devices (memory sectors, neopkg cache, etc): No longer needed as we are executing the scripts directly.
 - Developer tools (`devtools.mcm`): Where we're going we won't need them.
 - MicroflashOS Next Package Manager (`neopkg.mcm`) and by extension all packages in the [mfos-next-packages repository](https://github.com/knbn1/mfos-next-packages): We'll rebuild package management from the ground up.
 
-To-do (priority sorted from highest to lowest):
+### To-do (priority sorted from highest to lowest):
 
 - Improve command handling
 - Implement (local) package support (neopykg heh)
