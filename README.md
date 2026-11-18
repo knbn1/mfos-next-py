@@ -19,13 +19,13 @@ What has been implemented:
 - Most of the kernel (all of `cmd.mcm`'s functions are now integrated into `kernel.py`) 
 - Core utilities (`core.mcm`), this includes commands such as `about`, `clock` and `shutdown`
 - File management tools (`fsutils.mcm`), things like `mkdir`, `rmdir`, `cd`
+- MicroflashOS Protector (`proctector.mcm`)
 - Loading help sections with `help`
 
 What has not:
 
 - Functions for user creation, deletion and switching (`userspace.mcm`)
 - MicroflashOS Next Package Manager (`neopkg.mcm`) and by extension all packages in the [mfos-next-packages repository](https://github.com/knbn1/mfos-next-packages)
-- MicroflashOS Protector (`proctector.mcm`), needed as an authentication procedure for critical changes
 - Logging and command history functions
 
 What will not be implemented:
@@ -38,7 +38,7 @@ To-do (priority sorted from highest to lowest):
 
 - Implement `userspace.mcm`
 - ~~Implement loading/reading help sections~~
-- Implement `proctector.mcm`
+- ~~Implement `proctector.mcm`~~
 
 Note that this time round I'm willing to sacrifice a bit of the lore for a more functional system. My stubbornness ruined a few things in the original mfos-next project.
 
