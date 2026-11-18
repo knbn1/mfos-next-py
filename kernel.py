@@ -57,7 +57,6 @@ print("[kernel] INFO: boot process completed")
 
 print("\nWelcome to MicroflashOS Next!")
 print("Available commands:", len(commands))
-print("\nLogged in as", user)
 
 # set a variable for the while loop
 
