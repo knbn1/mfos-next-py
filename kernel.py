@@ -7,14 +7,14 @@ original mfos-next: https://github.com/knbn1/mfos-next
 '''
 
 import os
+import socket
 import importlib
 
 # set a whole bunch of variables
 
 mfosVer = "2026.11.18-py"
-
 modules = ["core", "fsutils"]
-
+hostname = socket.gethostname()
 user = os.getlogin()
 
 print("[bootloader] INFO: logging system initialized")
@@ -55,7 +55,7 @@ print("[kernel] INFO: boot process completed")
 
 # an motd would go well here
 
-print("\nWelcome to MicroflashOS Next (Python)!")
+print("\nWelcome to MicroflashOS Next!")
 print("Available commands:", len(commands))
 print("\nLogged in as", user)
 

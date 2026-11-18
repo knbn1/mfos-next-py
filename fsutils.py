@@ -2,12 +2,11 @@
 
 import os
 import shutil
-from pathlib import Path
 
 homedir = os.getcwd()
 
 def cd(directory):
-    if Path(directory).exists():
+    if os.path.exists(directory):
         os.chdir(directory)
         print("Current working directory:", os.getcwd())
     else:
@@ -19,7 +18,7 @@ def list():
     print(os.listdir(os.getcwd()))
 
 def rm(rm):
-    if Path(rm).exists():
+    if os.path.exists(rm):
         os.remove(rm)
         if os.path.exists(rm):
             print(f"Failed to delete file {rm}!")
@@ -29,7 +28,7 @@ def rm(rm):
         print(f"File {rm} not found!")
 
 def rmdir(rmdir):
-    if Path(rmdir).exists():
+    if os.path.exists(rmdir):
         shutil.rmtree(rmdir)
         if os.path.exists(rmdir):
             print(f"Failed to delete file {rmdir}!")
@@ -39,11 +38,11 @@ def rmdir(rmdir):
         print(f"Directory {rmdir} not found!")
 
 def mkdir(mkdirs):
-    if Path(mkdirs).exists():
+    if os.path.exists(mkdirs):
         print(f"Directory {mkdir} already exists!")
     else:
         os.makedirs(mkdirs)
-        if Path(mkdirs).exists():
+        if os.path.exists(mkdirs):
             print(f"Created path {mkdirs}")
         else:
             print(f"Failed to create path {mkdirs}!")
@@ -58,22 +57,22 @@ def back():
     os.chdir('../')
 
 def rename(oldname, newname):
-    if Path(oldname).exists():
+    if os.path.exists(oldname):
         os.rename(oldname, newname)
-        if Path(oldname).exists():
+        if os.path.exists(oldname):
             print(f"Failed to rename {oldname}!")
         else:
             print(f"Renamed {oldname} to {newname}")
 
 def copy(type, source, destination):
     if type == "directory":
-        if Path(source).exists() and not Path(destination).exists():
+        if os.path.exists(source) and not os.path.exists(destination):
             shutil.copytree(source, destination, symlinks=False)
             print(f"Copied directory {source} to {destination}")
         else:
             print(f"Directory {destination} already exists!")
     elif type == "file":
-        if Path(source).exists() and not Path(destination).exists():
+        if os.path.exists(source) and not os.path.exists(destination):
             shutil.copy(source, destination, follow_symlinks=False)
             print(f"Copied file {source} to {destination}")
         else:
