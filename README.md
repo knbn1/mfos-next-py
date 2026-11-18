@@ -22,21 +22,25 @@ What has been implemented:
 - MicroflashOS Protector (`proctector.mcm`)
 - Loading help sections with `help`
 
-What has not:
+What has not been but will be implemented soon:
 
-- Functions for user creation, deletion and switching (`userspace.mcm`)
-- MicroflashOS Next Package Manager (`neopkg.mcm`) and by extension all packages in the [mfos-next-packages repository](https://github.com/knbn1/mfos-next-packages)
-- Logging and command history functions
+- MicroflashOS Next Consolidations (`compact.mcm`)
 
-What will not be implemented:
+What may not be implemented:
 
-- MicroflashOS Next Consolidations (`compact.mcm`) as to my knowledge there is no way to make that work yet
-- Devices (memory sectors, neopkg cache, etc)
-- Developer tools (`devtools.mcm`), where we're going we won't need them.
+- Functions for user creation, deletion and switching (`userspace.mcm`): Not really necessary.
+- Logging and command history functions: Too much work, and will likely bloat the OS. Exception handling is more than enough.
+
+What will absolutely not be implemented:
+
+- Devices (memory sectors, neopkg cache, etc): No longer needed as we are executing the scripts directly.
+- Developer tools (`devtools.mcm`): Where we're going we won't need them.
+- MicroflashOS Next Package Manager (`neopkg.mcm`) and by extension all packages in the [mfos-next-packages repository](https://github.com/knbn1/mfos-next-packages): We'll rebuild package management from the ground up.
 
 To-do (priority sorted from highest to lowest):
 
-- Implement `userspace.mcm`
+- Improve command handling
+- Implement (local) package support (neopykg heh)
 - ~~Implement loading/reading help sections~~
 - ~~Implement `proctector.mcm`~~
 
