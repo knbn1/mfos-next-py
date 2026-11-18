@@ -13,6 +13,7 @@ What has been implemented:
 - Most of the kernel (all of `cmd.mcm`'s functions are now integrated into `kernel.py`) 
 - Most of the core utilities sysmodule (`core.mcm`), this includes commands such as `about`, `clock` and `shutdown`
 - Most of the file management tools (`fsutils.mcm`), things like `mkdir`, `rmdir`, `cd`
+- Some rudimentary checks, at some point they should be replaced with proper `try()` and `except()`
 
 What has not:
 
@@ -31,9 +32,13 @@ What will not be implemented:
 
 ## Installation Instructions
 
+### For the latest commit:
 Download `kernel.py` and all other Python scripts you see in the main repository.
 
 Then run `kernel.py`. It should find all the necessary sysmodules and boot to MicroflashOS Next.
+
+### For releases:
+Download `mfos-next-py.zip` and extract it somewhere. Then run `kernel.py`.
 
 ## Uninstalling
 
