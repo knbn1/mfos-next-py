@@ -6,11 +6,12 @@ import shutil
 homedir = os.getcwd()
 
 def cd(directory):
-    if os.path.exists(directory):
+    try:
         os.chdir(directory)
-        print("Current working directory:", os.getcwd())
-    else:
+    except FileNotFoundError:
         print(f"Directory {directory} invalid!")
+    else:
+        print("Current working directory:", os.getcwd())
 
 def list():
     print("Current working directory:", os.getcwd())
@@ -18,51 +19,74 @@ def list():
     print(os.listdir(os.getcwd()))
 
 def rm(rm):
-    if os.path.exists(rm):
+    try:
         os.remove(rm)
-        if os.path.exists(rm):
-            print(f"Failed to delete file {rm}!")
-        else:
-            print(f"Deleted file {rm}")
-    else:
+    except FileNotFoundError:
         print(f"File {rm} not found!")
-
-def rmdir(rmdir):
-    if os.path.exists(rmdir):
-        shutil.rmtree(rmdir)
-        if os.path.exists(rmdir):
-            print(f"Failed to delete file {rmdir}!")
+    except PermissionError:
+        print("You do not have read-write privileges!")
+    except IsADirectoryError:
+        try:
+            shutil.rmtree(rm)
+        except FileNotFoundError:
+            print(f"Directory {rm} not found!")
+        except PermissionError:
+            print("You do not have read-write privileges!")
+        except Exception as error:
+            print(f"Failed to delete path {rm}!")
+            print("An unhandled exception has occurred:\n")
+            print(error)
         else:
-            print(f"Deleted directory {rmdir}")
+            print(f"Deleted directory {rm}")
+    except Exception as error:
+        print(f"Failed to delete file {rm}!")
+        print("An unhandled exception has occurred:\n")
+        print(error)
     else:
-        print(f"Directory {rmdir} not found!")
+        print(f"Deleted file {rm}")
 
 def mkdir(mkdirs):
     if os.path.exists(mkdirs):
-        print(f"Directory {mkdir} already exists!")
+        print(f"Directory {mkdirs} already exists!")
     else:
-        os.makedirs(mkdirs)
-        if os.path.exists(mkdirs):
-            print(f"Created path {mkdirs}")
-        else:
+        try:
+            os.makedirs(mkdirs)
+        except PermissionError:
+            print("You do not have read-write privileges!")
+        except Exception as error:
             print(f"Failed to create path {mkdirs}!")
+            print("An unhandled exception has occurred:\n")
+            print(error)
+        else:
+            print(f"Created path {mkdirs}")
 
 def home():
-    os.chdir(homedir)
-    print("Back to home directory:\n")
-    print(os.getcwd())
+    try:
+        os.chdir(homedir)
+    except FileNotFoundError:
+        print("Home directory does not exist!")
+        print("Seriously though, what have you done?!")
+    else:
+        print("Back to home directory:\n")
+        print(os.getcwd())
 
 def back():
     print("Going up one level.")
     os.chdir('../')
 
 def rename(oldname, newname):
-    if os.path.exists(oldname):
+    try:
         os.rename(oldname, newname)
-        if os.path.exists(oldname):
-            print(f"Failed to rename {oldname}!")
-        else:
-            print(f"Renamed {oldname} to {newname}")
+    except FileNotFoundError:
+        print("Target not found!")
+    except PermissionError:
+        print("You do not have read-write privileges!")
+    except Exception as error:
+        print(f"Failed to rename {oldname}!")
+        print("An unhandled exception has occurred:\n")
+        print(error)
+    else:
+        print(f"Renamed {oldname} to {newname}")
 
 def copy(type, source, destination):
     if type == "directory":
@@ -79,3 +103,15 @@ def copy(type, source, destination):
             print(f"File {destination} already exists!")
     else:
         print("Please specify a type.")
+
+def extract(file, destination):
+    try:
+        shutil.unpack_archive(file, destination)
+    except PermissionError:
+        print("You do not have read-write privileges!")
+    except FileNotFoundError:
+        print("Target zip file not found!")
+    except shutil.ReadError:
+        print("Could not read archive! Is it in the correct .zip format?")
+    else:
+        print(f"Extracted contents of {file} to {destination}")

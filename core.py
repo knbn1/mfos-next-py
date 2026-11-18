@@ -19,12 +19,12 @@ cmd_help = {
     "list": "List available files and folders",
     "cd [path]": "Change directory",
     "mkdir [directory]": "Create a directory",
-    "rm [file]": "Delete a file",
-    "rmdir [directory]": "Delete a directory",
+    "rm [object]": "Delete a file/directory",
     "rename [old name] [new name]": "Rename a file/folder",
     "copy [file/directory] [source] [destination]": "Copy a file or folder",
+    "extract [zip file] [destination]": "Extract a zip file to a directory",
     "home": "Revert to home/starting directory",
-    "back": "Go up one level"
+    "back": "Go up one level in the directory tree"
 }
 
 def help():

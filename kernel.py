@@ -42,13 +42,13 @@ commands = {
     # fsutils sysmodule
     "list": fsutils.list,
     "rm": fsutils.rm,
-    "rmdir": fsutils.rmdir,
     "mkdir": fsutils.mkdir,
     "home": fsutils.home,
     "back": fsutils.back,
     "cd": fsutils.cd,
     "rename": fsutils.rename,
-    "copy": fsutils.copy
+    "copy": fsutils.copy,
+    "extract": fsutils.extract
 }
 
 print("[kernel] INFO: boot process completed")
@@ -74,7 +74,10 @@ while status == "running":
         args = cmdline[1:]
         print("") # empty line
         if command in commands:
-            commands[command](*args)
+            try:
+                commands[command](*args)
+            except TypeError:
+                print("A TypeError exception has occured.\nMaybe you haven't specified an argument?")
         else:
             print("Invalid command.")
 
