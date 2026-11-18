@@ -70,11 +70,17 @@ status = "running"
 
 while status == "running":
     user_input = input(f"\n{user}@{hostname}: ")
-    print("") # empty line
-    if user_input in commands:
-        commands[user_input]()
+    if user_input == "":
+        print("\nInvalid command.")
     else:
-        print("Invalid command.")
+        cmdline = user_input.split(' ')
+        command = cmdline[0]
+        args = cmdline[1:]
+        print("") # empty line
+        if command in commands:
+            commands[command](*args)
+        else:
+            print("Invalid command.")
 
 
 

@@ -5,51 +5,47 @@ from pathlib import Path
 
 homedir = os.getcwd()
 
-def cd():
-    cd = input("Directory to enter: ")
-    if Path(cd).exists():
-        os.chdir(cd)
+def cd(directory):
+    if Path(directory).exists():
+        os.chdir(directory)
+        print("Current working directory:", os.getcwd())
     else:
-        print(f"Directory {cd} invalid!")
+        print(f"Directory {directory} invalid!")
 
 def list():
     print("Current working directory:", os.getcwd())
     print("")
     print(os.listdir(os.getcwd()))
 
-def rm():
-    rm = input("File to delete: ")
+def rm(rm):
     if Path(rm).exists():
         os.remove(rm)
         if os.path.exists(rm):
-            print(f"\nFailed to delete file {rm}!")
+            print(f"Failed to delete file {rm}!")
         else:
-            print(f"\nDeleted file {rm}")
+            print(f"Deleted file {rm}")
     else:
-        print(f"\nFile {rm} not found!")
+        print(f"File {rm} not found!")
 
-def rmdir():
-    rmdir = input("Directory to delete: ")
+def rmdir(rmdir):
     if Path(rmdir).exists():
         os.rmdir(rmdir)
         if os.path.exists(rmdir):
-            print(f"\nFailed to delete file {rmdir}!")
+            print(f"Failed to delete file {rmdir}!")
         else:
-            print(f"\nDeleted directory {rmdir}")
+            print(f"Deleted directory {rmdir}")
     else:
-        print(f"\nDirectory {rmdir} not found!")
+        print(f"Directory {rmdir} not found!")
 
-def mkdir():
-    print("Create a path by seperating folders with forward slashes.")
-    mkdirs = input("Folder(s) to create: ")
+def mkdir(mkdirs):
     if Path(mkdirs).exists():
-        print(f"\nDirectory {mkdir} already exists!")
+        print(f"Directory {mkdir} already exists!")
     else:
         os.makedirs(mkdirs)
         if Path(mkdirs).exists():
-            print(f"\nCreated path {mkdirs}")
+            print(f"Created path {mkdirs}")
         else:
-            print(f"\nFailed to create path {mkdirs}!")
+            print(f"Failed to create path {mkdirs}!")
 
 def home():
     os.chdir(homedir)
@@ -60,12 +56,10 @@ def back():
     print("Going up one level.")
     os.chdir('../')
 
-def rename():
-    oldname = input("File/folder to rename: ")
-    newname = input("\nNew name: ")
+def rename(oldname, newname):
     if Path(oldname).exists():
         os.rename(oldname, newname)
         if Path(oldname).exists():
-            print(f"\nFailed to rename {oldname}!")
+            print(f"Failed to rename {oldname}!")
         else:
-            print(f"\nRenamed {oldname} to {newname}")
+            print(f"Renamed {oldname} to {newname}")

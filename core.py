@@ -17,11 +17,11 @@ cmd_help = {
     "clear": "Clear console output",
     "shutdown": "Power off",
     "list": "List available files and folders",
-    "cd": "Change directory",
-    "mkdir": "Create a directory",
-    "rm": "Delete a file",
-    "rmdir": "Delete a directory",
-    "rename": "Rename a file/folder",
+    "cd [path]": "Change directory",
+    "mkdir [directory]": "Create a directory",
+    "rm [file]": "Delete a file",
+    "rmdir [directory]": "Delete a directory",
+    "rename [old name] [new name]": "Rename a file/folder",
     "home": "Revert to home/starting directory",
     "back": "Go up one level"
 }
