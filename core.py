@@ -22,6 +22,7 @@ cmd_help = {
     "rm [file]": "Delete a file",
     "rmdir [directory]": "Delete a directory",
     "rename [old name] [new name]": "Rename a file/folder",
+    "copy [file/directory] [source] [destination]": "Copy a file or folder",
     "home": "Revert to home/starting directory",
     "back": "Go up one level"
 }

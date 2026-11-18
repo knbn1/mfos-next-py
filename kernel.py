@@ -51,7 +51,8 @@ commands = {
     "home": fsutils.home,
     "back": fsutils.back,
     "cd": fsutils.cd,
-    "rename": fsutils.rename
+    "rename": fsutils.rename,
+    "copy": fsutils.copy
 }
 
 print("[kernel] INFO: boot process completed")

@@ -1,6 +1,7 @@
 # mfos-next-py fsutils sysmodule
 
 import os
+import shutil
 from pathlib import Path
 
 homedir = os.getcwd()
@@ -29,7 +30,7 @@ def rm(rm):
 
 def rmdir(rmdir):
     if Path(rmdir).exists():
-        os.rmdir(rmdir)
+        shutil.rmtree(rmdir)
         if os.path.exists(rmdir):
             print(f"Failed to delete file {rmdir}!")
         else:
@@ -63,3 +64,19 @@ def rename(oldname, newname):
             print(f"Failed to rename {oldname}!")
         else:
             print(f"Renamed {oldname} to {newname}")
+
+def copy(type, source, destination):
+    if type == "directory":
+        if Path(source).exists() and not Path(destination).exists():
+            shutil.copytree(source, destination, symlinks=False)
+            print(f"Copied directory {source} to {destination}")
+        else:
+            print(f"Directory {destination} already exists!")
+    elif type == "file":
+        if Path(source).exists() and not Path(destination).exists():
+            shutil.copy(source, destination, follow_symlinks=False)
+            print(f"Copied file {source} to {destination}")
+        else:
+            print(f"File {destination} already exists!")
+    else:
+        print("Please specify a type.")
