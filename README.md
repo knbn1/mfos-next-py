@@ -2,9 +2,15 @@
 
 A port of [MicroflashOS Next](https://github.com/knbn1/mfos-next) to Python.
 
-Originally it was written with Batch but it was a pain to debug and it not being cross platform meant that development was limited by the underlying Windows operating system.
+## Why?
 
-Having switched to Linux for well over 2 years now, I think it's about time I left Windows behind and created a more open MicroflashOS.
+Originally it was written with Batch but it was a pain to debug and it not being cross-platform meant that development was limited by the underlying Windows operating system, which we all know absolutely sucks nowadays.
+
+I've been using Wine to develop it on Linux, which was fine for all intents and purposes but there were a decent amount compatibility problems when switching between Windows and Wine.
+
+Having switched to Linux for well over 2 years now, I think it's about time I left Windows behind to create a more open and cross-platform MicroflashOS.
+
+Also I've started to take Python classes at school and this sounds like a good place to improve my skills.
 
 ## Progress Report
 
