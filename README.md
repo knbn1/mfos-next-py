@@ -6,7 +6,7 @@ A port of [MicroflashOS Next](https://github.com/knbn1/mfos-next) to Python.
 
 Originally it was written with Batch but it was a pain to debug and it not being cross-platform meant that development was limited by the underlying Windows operating system, which we all know absolutely sucks nowadays.
 
-I've been using Wine to develop it on Linux, which was fine for all intents and purposes but there were a decent amount compatibility problems when switching between Windows and Wine.
+I've been using Wine to develop it on Linux, which was fine for all intents and purposes but there were a decent amount of compatibility problems when switching between Windows and Wine.
 
 Having switched to Linux for well over 2 years now, I think it's about time I left Windows behind to create a more open and cross-platform MicroflashOS.
 
@@ -54,8 +54,8 @@ Delete all the Python scripts.
 
 I think it's fine *as a learning tool*. 
 
-I myself have consulted Google Gemini a few times while developing this project to help with some things I have no knowledge of how to make yet, such as the command parser (which generates a list of variables from the user input).
+I myself have consulted Google Gemini a few times while developing this project to help with some things I had no clue of how to make, such as the command parser (which recursively generates a list of variables from the user input to use as arguments).
 
-However, I strictly believe that you should take the time to de-slop your code. How? Try rewriting it, doing your due research so you actually understand how it works and can write it by yourself the next time.
+However, I strictly believe that you should take the time to de-slop or "humanize" your code. How? Try rewriting it, doing your due research so you actually understand how it works and can write it by yourself the next time.
 
 You cannot simply copy paste an AI's output and put it into your pull request or build your code from scratch with AI assistance.
