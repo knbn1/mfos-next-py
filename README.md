@@ -49,3 +49,13 @@ Download `mfos-next-py.zip` and extract it somewhere. Then run `kernel.py`.
 ## Uninstalling
 
 Delete all the Python scripts.
+
+# My stance on the usage of AI
+
+I think it's fine *as a learning tool*. 
+
+I myself have consulted Google Gemini a few times while developing this project to help with some things I have no knowledge of how to make yet, such as the command parser (which generates a list of variables from the user input).
+
+However, I strictly believe that you should take the time to de-slop your code. How? Try rewriting it, doing your due research so you actually understand how it works and can write it by yourself the next time.
+
+You cannot simply copy paste an AI's output and put it into your pull request or build your code from scratch with AI assistance.
