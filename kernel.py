@@ -7,19 +7,15 @@ original mfos-next: https://github.com/knbn1/mfos-next
 '''
 
 import os
-import socket
 import importlib
 
 # set a whole bunch of variables
 
-mfosVer = "2026.11.01-py"
+mfosVer = "2026.11.18-py"
 
 modules = ["core", "fsutils"]
 
 user = os.getlogin()
-hostOS = os.name
-hostname = socket.gethostname()
-
 
 print("[bootloader] INFO: logging system initialized")
 print(f"[kernel] INFO: hello world, my version is {mfosVer}")

@@ -5,7 +5,7 @@ import os
 import socket
 import datetime
 
-mfosVer = "2026.11.01-py"
+mfosVer = "2026.11.18-py"
 user = os.getlogin()
 hostOS = os.name
 hostname = socket.gethostname()
