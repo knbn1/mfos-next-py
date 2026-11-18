@@ -35,6 +35,7 @@ def about():
     print("MicroflashOS version:", mfosVer)
     print("Hostname:", hostname)
     print("Environment:", hostOS)
+    print("Processors:", os.cpu_count())
     print("\nLogged in as", user)
 
 def clock():

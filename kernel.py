@@ -13,7 +13,7 @@ import importlib
 # set a whole bunch of variables
 
 mfosVer = "2026.11.18-py"
-modules = ["core", "fsutils"]
+mfos_modules = ["core", "fsutils"]
 hostname = socket.gethostname()
 user = os.getlogin()
 
@@ -22,13 +22,15 @@ print(f"[kernel] INFO: hello world, my version is {mfosVer}")
 
 # load modules
 
-for mod in modules:
-    if os.path.exists(f"{mod}.py"):
+for mod in mfos_modules:
+    try:
         globals()[mod] = importlib.import_module(mod)
-        print("[kmodsinit] INFO: loaded", mod)
-    else:
+    except Exception as error:
         print("[kmodsinit] ERROR: failed to load", mod)
+        print("[kmodsinit] ERROR:", error)
         exit()
+    else:
+        print("[kmodsinit] INFO: loaded", mod)
 
 # command list
 
@@ -55,8 +57,9 @@ print("[kernel] INFO: boot process completed")
 
 # an motd would go well here
 
-print("\nWelcome to MicroflashOS Next!")
+print("\nWelcome to MicroflashOS Next!\n")
 print("Available commands:", len(commands))
+print("Modules loaded:", len(mfos_modules))
 
 # set a variable for the while loop
 
@@ -78,6 +81,9 @@ while status == "running":
                 commands[command](*args)
             except TypeError:
                 print("A TypeError exception has occured.\nMaybe you haven't specified an argument?")
+            except Exception as error:
+                print("An unhandled exception has occurred:\n")
+                print(error)
         else:
             print("Invalid command.")
 
