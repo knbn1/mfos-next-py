@@ -12,7 +12,7 @@ import importlib
 
 # set a whole bunch of variables
 
-mfosVer = "2026.11.18-py"
+mfosVer = "2026.11.19-py"
 mfos_modules = ["core", "fsutils"]
 hostname = socket.gethostname()
 user = os.getlogin()

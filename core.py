@@ -5,7 +5,7 @@ import os
 import socket
 import datetime
 
-mfosVer = "2026.11.18-py"
+mfosVer = "2026.11.19-py"
 
 sections = ["core", "fsutils"]
 helpdir = f"{os.getcwd()}/docs"
