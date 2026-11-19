@@ -26,6 +26,7 @@ Also I've started to take Python classes at school and this sounds like a good p
 - File management tools (`fsutils.mcm`), things like `mkdir`, `rmdir`, `cd`
 - MicroflashOS Protector (`proctector.mcm`)
 - Loading help sections with `help`
+- Developer tools (`devtools.mcm`) as `devtools.py` although its purpose is drastically different now. 
 
 ### What has not been but will be implemented soon:
 
@@ -39,7 +40,6 @@ Also I've started to take Python classes at school and this sounds like a good p
 ### What will absolutely not be implemented:
 
 - Devices (memory sectors, neopkg cache, etc): No longer needed as we are executing the scripts directly.
-- Developer tools (`devtools.mcm`): Where we're going we won't need them.
 - MicroflashOS Next Package Manager (`neopkg.mcm`) and by extension all packages in the [mfos-next-packages repository](https://github.com/knbn1/mfos-next-packages): We'll rebuild package management from the ground up.
 
 ### To-do (priority sorted from highest to lowest):
