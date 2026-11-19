@@ -37,8 +37,13 @@ get command list from file commands.txt with pickle
 todo: replace with json encoding for human readable data
 for now you can generate a commands.txt with the included cmdgen.py
 '''
-with open("commands.txt", "rb") as file:
-    commands = pickle.load(file)
+print("[kcmdinit] INFO: loading commands.txt")
+try:
+    with open("commands.txt", "rb") as file:
+        commands = pickle.load(file)
+except Exception as error:
+    print(f"[kcmdinit] ERROR: could not find commands.txt: {error}")
+    exit()
 
 print("[kernel] INFO: boot process completed")
 
