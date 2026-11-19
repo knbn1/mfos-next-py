@@ -40,12 +40,11 @@ commands = {
 
 # list generator, default commands.txt
 
-
 print(f"\nGenerating commands list as commands.txt\n")
 try:
-    with open(output, "wb") as file:
+    with open("commands.txt", "wb") as file:
         pickle.dump(commands, file)
 except Exception as error:
     print("Unhandled exception:", error)
 else:
-    print("Generated new commands list as", output)
+    print("Generated new commands list as commands.txt")
