@@ -41,6 +41,11 @@ commands = {
 # generate and save to output
 
 def gencmd(output):
-    print(f"generating commands list as {output}")
-    with open(output, "wb") as file:
-        pickle.dump(commands, file)
+    print(f"\nGenerating commands list as {output}\n")
+    try:
+        with open(output, "wb") as file:
+            pickle.dump(commands, file)
+    except Exception as error:
+        print("Unhandled exception:", error)
+    else:
+        print("Generated new commands list as", output)
