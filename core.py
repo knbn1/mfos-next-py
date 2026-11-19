@@ -7,7 +7,7 @@ import datetime
 
 mfosVer = "2026.11.19-py"
 
-sections = ["core", "fsutils"]
+sections = ["core", "fsutils", "devtools"]
 helpdir = f"{os.getcwd()}/docs"
 
 user = os.getlogin()
@@ -50,6 +50,3 @@ def shutdown():
     print("Shutting down...")
     exit()
 
-def tryauth():
-    import proctector
-    proctector.auth()

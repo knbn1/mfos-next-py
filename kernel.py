@@ -9,11 +9,12 @@ original mfos-next: https://github.com/knbn1/mfos-next
 import os
 import socket
 import importlib
+import pickle
 
 # set a whole bunch of variables
 
 mfosVer = "2026.11.19-py"
-mfos_modules = ["core", "fsutils"]
+mfos_modules = ["core", "fsutils", "devtools"]
 hostname = socket.gethostname()
 user = os.getlogin()
 
@@ -31,27 +32,13 @@ for mod in mfos_modules:
     else:
         print("[kmodsinit] INFO: loaded sysmodule", mod)
 
-# command list
-
-commands = {
-    # core sysmodule
-    "about": core.about,
-    "clock": core.clock,
-    "shutdown": core.shutdown,
-    "help": core.help,
-    "clear": core.clear,
-    "tryauth": core.tryauth,
-    # fsutils sysmodule
-    "list": fsutils.list,
-    "rm": fsutils.rm,
-    "mkdir": fsutils.mkdir,
-    "home": fsutils.home,
-    "back": fsutils.back,
-    "cd": fsutils.cd,
-    "rename": fsutils.rename,
-    "copy": fsutils.copy,
-    "extract": fsutils.extract
-}
+''''
+get command list from file commands.txt with pickle
+todo: replace with json encoding for human readable data
+for now you can generate a commands.txt with the included cmdgen.py
+'''
+with open("commands.txt", "rb") as file:
+    commands = pickle.load(file)
 
 print("[kernel] INFO: boot process completed")
 
