@@ -22,10 +22,10 @@ Also I've started to take Python classes at school and this sounds like a good p
 ### What has been implemented:
 
 - Most of the kernel (all of `cmd.mcm`'s functions are now integrated into `kernel.py`) 
-- Core utilities (`core.mcm`), this includes commands such as `about`, `clock` and `shutdown`
-- File management tools (`fsutils.mcm`), things like `mkdir`, `rmdir`, `cd`
-- MicroflashOS Protector (`proctector.mcm`)
-- Loading help sections with `help` (`core.py`)
+- Core utilities (`core.mcm`) as `core.py`, this includes commands such as `about`, `clock` and `shutdown`
+- File management tools (`fsutils.mcm`) as `fsutils.py`, things like `mkdir`, `rmdir`, `cd`
+- MicroflashOS Protector (`proctector.mcm`) as `proctector.py`. Instead of simply typing `CONFIRM` into the terminal, you now have to answer a very small math question. 
+- Loading help sections with `help` (included inside `core.py`)
 - Developer tools (`devtools.mcm`) as `devtools.py` although its purpose is drastically different now. 
 - MicroflashOS Consolidations (`compact.mcm`) as `compact.py`
 
