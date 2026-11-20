@@ -4,10 +4,11 @@ import sys
 import os
 import socket
 import datetime
+from compact import unhandledException
 
 mfosVer = "2026.11.19-py"
 
-sections = ["core", "fsutils", "devtools"]
+sections = ["core", "fsutils", "devtools", "abc"]
 helpdir = f"{os.getcwd()}/docs"
 
 user = os.getlogin()
@@ -27,9 +28,7 @@ def help():
             except FileNotFoundError:
                 print(f"Could not find help section {section}.mhs")
             except Exception as error:
-                print(f"Failed to delete path {rm}!")
-                print("An unhandled exception has occurred:\n")
-                print(error)
+                unhandledException(f"Could not load help section {section}.mhs", error)
         print(f"Loaded {count_section} help sections")
 
 def about():

@@ -2,14 +2,18 @@
 
 import os
 import shutil
+from compact import unhandledException
+from compact import noPermission
 
 homedir = os.getcwd()
 
 def cd(directory):
     try:
         os.chdir(directory)
-    except FileNotFoundError:
-        print(f"Directory {directory} invalid!")
+    #except FileNotFoundError:
+    #    print(f"Directory {directory} invalid!")
+    except Exception as error:
+        unhandledException(f"Could not change current directory to {directory}!", error)
     else:
         print("Current working directory:", os.getcwd())
 
@@ -24,24 +28,20 @@ def rm(rm):
     except FileNotFoundError:
         print(f"File {rm} not found!")
     except PermissionError:
-        print("You do not have read-write privileges!")
+        noPermission()
     except IsADirectoryError:
         try:
             shutil.rmtree(rm)
         except FileNotFoundError:
             print(f"Directory {rm} not found!")
         except PermissionError:
-            print("You do not have read-write privileges!")
+            noPermission()
         except Exception as error:
-            print(f"Failed to delete path {rm}!")
-            print("An unhandled exception has occurred:\n")
-            print(error)
+            unhandledException(f"Failed to delete path {rm}!", error)
         else:
             print(f"Deleted directory {rm}")
     except Exception as error:
-        print(f"Failed to delete file {rm}!")
-        print("An unhandled exception has occurred:\n")
-        print(error)
+        unhandledException(f"Failed to delete file {rm}!", error)
     else:
         print(f"Deleted file {rm}")
 
@@ -52,11 +52,9 @@ def mkdir(mkdirs):
         try:
             os.makedirs(mkdirs)
         except PermissionError:
-            print("You do not have read-write privileges!")
+            noPermission()
         except Exception as error:
-            print(f"Failed to create path {mkdirs}!")
-            print("An unhandled exception has occurred:\n")
-            print(error)
+            unhandledException(f"Failed to create path {mkdirs}!", error)
         else:
             print(f"Created path {mkdirs}")
 
@@ -66,6 +64,8 @@ def home():
     except FileNotFoundError:
         print("Home directory does not exist!")
         print("Seriously though, what have you done?!")
+    except Exception as error:
+        unhandledException(f"Failed to change working directory to home directory!", error)
     else:
         print("Back to home directory:\n")
         print(os.getcwd())
@@ -80,11 +80,9 @@ def rename(oldname, newname):
     except FileNotFoundError:
         print("Target not found!")
     except PermissionError:
-        print("You do not have read-write privileges!")
+        noPermission()
     except Exception as error:
-        print(f"Failed to rename {oldname}!")
-        print("An unhandled exception has occurred:\n")
-        print(error)
+        unhandledException(f"Failed to rename {oldname}!", error)
     else:
         print(f"Renamed {oldname} to {newname}")
 
@@ -108,14 +106,12 @@ def extract(file, destination):
     try:
         shutil.unpack_archive(file, destination)
     except PermissionError:
-        print("You do not have read-write privileges!")
+        noPermission()
     except FileNotFoundError:
         print("Target zip file not found!")
     except shutil.ReadError:
         print("Could not read archive! Is it in the correct .zip format?")
     except Exception as error:
-        print(f"Failed to extract {file} to {destination}!")
-        print("An unhandled exception has occurred:\n")
-        print(error)
+        unhandledException(f"Failed to extract {file} to {destination}!", error)
     else:
         print(f"Extracted contents of {file} to {destination}")

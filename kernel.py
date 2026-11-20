@@ -14,7 +14,7 @@ import pickle
 # set a whole bunch of variables
 
 mfosVer = "2026.11.19-py"
-mfos_modules = ["core", "fsutils", "devtools"]
+mfos_modules = ["core", "fsutils", "devtools", "compact"]
 hostname = socket.gethostname()
 user = os.getlogin()
 
@@ -26,6 +26,9 @@ print(f"[kernel] INFO: hello world, my version is {mfosVer}")
 for mod in mfos_modules:
     try:
         globals()[mod] = importlib.import_module(mod)
+    except FileNotFoundError:
+        print(f"[kmodsinit] ERROR: could not find sysmodule {mod}")
+        exit()
     except Exception as error:
         print(f"[kmodsinit] ERROR: failed to load sysmodule {mod}: {error}")
         exit()
@@ -41,8 +44,11 @@ print("[kcmdinit] INFO: loading commands.txt")
 try:
     with open("commands.txt", "rb") as file:
         commands = pickle.load(file)
+except FileNotFoundError:
+    print(f"[kcmdinit] ERROR: could not find commands.txt")
+    exit()
 except Exception as error:
-    print(f"[kcmdinit] ERROR: could not find commands.txt: {error}")
+    print(f"[kcmdinit] ERROR: failed to load commands.txt: {error}")
     exit()
 
 print("[kernel] INFO: boot process completed")
@@ -71,8 +77,7 @@ while True:
                 print("A TypeError exception has occured.\nMaybe you haven't specified an argument?\n")
                 print(error)
             except Exception as error:
-                print("An unhandled exception has occurred:\n")
-                print(error)
+                compact.unhandledException(f"Could not execute command {command}!", error)
         else:
             print("Invalid command.")
 
