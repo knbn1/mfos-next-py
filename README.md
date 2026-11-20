@@ -60,7 +60,7 @@ Download `mfos-next-py.zip` and extract it somewhere. Then run `kernel.py`.
 
 ## Uninstalling
 
-Delete all the Python scripts.
+Delete all the Python (`.py`) scripts, `commands.txt`, `README.md` and the folder `docs`. Also delete `__pycache__` if it is present. 
 
 # My stance on the usage of AI
 
