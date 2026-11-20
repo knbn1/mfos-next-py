@@ -25,12 +25,16 @@ Also I've started to take Python classes at school and this sounds like a good p
 - Core utilities (`core.mcm`), this includes commands such as `about`, `clock` and `shutdown`
 - File management tools (`fsutils.mcm`), things like `mkdir`, `rmdir`, `cd`
 - MicroflashOS Protector (`proctector.mcm`)
-- Loading help sections with `help`
+- Loading help sections with `help` (`core.py`)
 - Developer tools (`devtools.mcm`) as `devtools.py` although its purpose is drastically different now. 
+- MicroflashOS Consolidations (`compact.mcm`) as `compact.py`
 
-### What has not been but will be implemented soon:
+### To-do (priority sorted from highest to lowest):
 
-- MicroflashOS Next Consolidations (`compact.mcm`)
+- ~~Improve command handling~~ (?)
+- Implement local package support (neopykg heh)
+- ~~Implement loading/reading help sections~~
+- ~~Implement `proctector.mcm`~~
 
 ### What may not be implemented:
 
@@ -42,19 +46,12 @@ Also I've started to take Python classes at school and this sounds like a good p
 - Devices (memory sectors, neopkg cache, etc): No longer needed as we are executing the scripts directly.
 - MicroflashOS Next Package Manager (`neopkg.mcm`) and by extension all packages in the [mfos-next-packages repository](https://github.com/knbn1/mfos-next-packages): We'll rebuild package management from the ground up.
 
-### To-do (priority sorted from highest to lowest):
-
-- Improve command handling
-- Implement (local) package support (neopykg heh)
-- ~~Implement loading/reading help sections~~
-- ~~Implement `proctector.mcm`~~
-
 Note that this time round I'm willing to sacrifice a bit of the lore for a more functional system. My stubbornness ruined a few things in the original mfos-next project.
 
 ## Installation Instructions
 
 ### For the latest commit:
-`git clone` or download the ZIP from the green Code button up top. 
+`git clone` or download the ZIP file from the green Code button up top. 
 
 Extract everything, then run `kernel.py`.
 
