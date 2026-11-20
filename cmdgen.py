@@ -6,13 +6,16 @@ format: "[command]": [module].[command]
 
 # load modules to process commands
 
-import importlib
-import pickle
+from importlib import import_module
+from pickle import dump
+from compact import unhandledException
+from sys import argv
+
 
 mfos_modules = ["core", "fsutils", "devtools"]
 for mod in mfos_modules:
-    globals()[mod] = importlib.import_module(mod)
-    print("[kmodsinit] INFO: loaded sysmodule", mod)
+    globals()[mod] = import_module(mod)
+    print("[cmdgen] INFO: loaded sysmodule", mod)
 
 # add commands here
 
@@ -41,11 +44,22 @@ commands = {
 # generate and save to output
 
 def gencmd(output):
-    print(f"\nGenerating commands list as {output}\n")
+    print(f"Generating commands list as {output}\n")
     try:
         with open(output, "wb") as file:
-            pickle.dump(commands, file)
+            dump(commands, file)
     except Exception as error:
-        print("Unhandled exception:", error)
+        unhandledException(f"Could not generate {output}!", error)
     else:
         print("Generated new commands list as", output)
+
+try:
+    arg = argv[1]
+    print("\nRunning in standalone mode.\n")
+except IndexError:
+    print("\nPlease specify a file to save to.")
+    exit()
+except Exception as error:
+    unhandledException(f"Unknown error:", error)
+else:
+    gencmd(arg)

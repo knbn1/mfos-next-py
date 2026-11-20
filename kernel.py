@@ -7,16 +7,14 @@ original mfos-next: https://github.com/knbn1/mfos-next
 '''
 
 import os
-import socket
-import importlib
-import pickle
+from socket import gethostname
+from importlib import import_module
+from pickle import load
 
 # set a whole bunch of variables
 
-mfosVer = "2026.11.19-py"
+mfosVer = "2026.11.20-py"
 mfos_modules = ["core", "fsutils", "devtools", "compact"]
-hostname = socket.gethostname()
-user = os.getlogin()
 
 print("[bootloader] INFO: logging system initialized")
 print(f"[kernel] INFO: hello world, my version is {mfosVer}")
@@ -25,15 +23,14 @@ print(f"[kernel] INFO: hello world, my version is {mfosVer}")
 
 for mod in mfos_modules:
     try:
-        globals()[mod] = importlib.import_module(mod)
+        globals()[mod] = import_module(mod)
+        print("[kmodsinit] INFO: loading sysmodule", mod)
     except FileNotFoundError:
         print(f"[kmodsinit] ERROR: could not find sysmodule {mod}")
         exit()
     except Exception as error:
         print(f"[kmodsinit] ERROR: failed to load sysmodule {mod}: {error}")
         exit()
-    else:
-        print("[kmodsinit] INFO: loaded sysmodule", mod)
 
 ''''
 get command list from file commands.txt with pickle
@@ -43,7 +40,7 @@ for now you can generate a commands.txt with the included cmdgen.py
 print("[kcmdinit] INFO: loading commands.txt")
 try:
     with open("commands.txt", "rb") as file:
-        commands = pickle.load(file)
+        commands = load(file)
 except FileNotFoundError:
     print(f"[kcmdinit] ERROR: could not find commands.txt")
     exit()
@@ -62,7 +59,7 @@ print("Modules loaded:", len(mfos_modules))
 # command parser
 
 while True:
-    user_input = input(f"\n{user}@{hostname}: ")
+    user_input = input(f"\n{os.getlogin()}@{gethostname()}: ")
     if user_input == "":
         print("\nInvalid command.")
     else:

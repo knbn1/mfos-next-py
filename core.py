@@ -1,6 +1,5 @@
 # mfos-next-py core sysmodule
 
-import sys
 import os
 import socket
 import datetime

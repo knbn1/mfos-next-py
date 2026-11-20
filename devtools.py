@@ -2,14 +2,17 @@
 
 import devtools
 import os
+from proctector import auth
 
 def tryauth():
     print("Triggering authentication process...")
     try:
-        import proctector
-        proctector.auth()
+        if os.path.exists("auth.yes"):
+            os.remove("auth.yes")
+        auth()
         if os.path.exists("auth.yes"):
             print("Authentication successful.")
+            os.remove("auth.yes")
         else:
             print("Failed to authenticate.")
     except FileNotFoundError:
@@ -20,12 +23,13 @@ def gencmd():
     print("")
     try:
         import cmdgen
-        import proctector
         if os.path.exists("auth.yes"):
             os.remove("auth.yes")
-        proctector.auth()
+        auth()
         if os.path.exists("auth.yes"):
             cmdgen.gencmd(out)
             os.remove("auth.yes")
+        else:
+            print("Could not generate command list.")
     except FileNotFoundError:
         print("cmdgen.py not found!")
