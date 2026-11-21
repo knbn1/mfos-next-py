@@ -11,10 +11,10 @@ from socket import gethostname
 from importlib import import_module
 from pickle import load
 
-# set a whole bunch of variables
+# set variables
 
 mfosVer = "2026.11.20-py"
-mfos_modules = ["core", "fsutils", "devtools", "compact"]
+mfos_modules = ["core", "fsutils", "devtools", "compact", "proctector"]
 
 print("[bootloader] INFO: logging system initialized")
 print(f"[kernel] INFO: hello world, my version is {mfosVer}")
@@ -37,7 +37,7 @@ get command list from file commands.txt with pickle
 todo: replace with json encoding for human readable data
 for now you can generate a commands.txt with the included cmdgen.py
 '''
-print("[kcmdinit] INFO: loading commands.txt")
+print("[kcmdinit] INFO: loading command list")
 try:
     with open("commands.txt", "rb") as file:
         commands = load(file)
@@ -77,10 +77,3 @@ while True:
                 compact.unhandledException(f"Could not execute command {command}!", error)
         else:
             print("Invalid command.")
-
-
-
-
-
-
-

@@ -5,11 +5,9 @@ import socket
 import datetime
 from compact import unhandledException
 
-mfosVer = "2026.11.19-py"
-
+mfosVer = "2026.11.20-py"
 sections = ["core", "fsutils", "devtools"]
 helpdir = f"{os.getcwd()}/docs"
-
 user = os.getlogin()
 hostOS = os.name
 hostname = socket.gethostname()
@@ -47,4 +45,3 @@ def clear():
 def shutdown():
     print("Shutting down...")
     exit()
-
