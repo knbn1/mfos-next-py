@@ -1,26 +1,32 @@
 '''
-very ugly port of mfos-next from batch to python
+not so ugly port of mfos-next from batch to python
 
 by knbnoob1
 
 original mfos-next: https://github.com/knbn1/mfos-next
 '''
 
+print("[bootloader] INFO: begin boot process stage 0")
+
 import os
+import sys
 from socket import gethostname
 from importlib import import_module
 from pickle import load
 
 # set variables
 
-mfosVer = "2026.11.20-py"
+mfosVer = "2026.11.28-py"
 mfos_modules = ["core", "fsutils", "devtools", "compact", "proctector"]
 
-print("[bootloader] INFO: logging system initialized")
+print("[bootloader] INFO: running on platform", os.name)
+print("[bootloader] INFO: python", sys.version)
+print("[bootloader] INFO: loading bundled kernel into memory...")
 print(f"[kernel] INFO: hello world, my version is {mfosVer}")
 
 # load modules
 
+print("[kernel] INFO: begin boot process stage 1")
 for mod in mfos_modules:
     try:
         globals()[mod] = import_module(mod)
@@ -37,7 +43,11 @@ get command list from file commands.txt with pickle
 todo: replace with json encoding for human readable data
 for now you can generate a commands.txt with the included cmdgen.py
 '''
+
+print("[kernel] INFO: begin boot process stage 2")
+
 print("[kcmdinit] INFO: loading command list")
+
 try:
     with open("commands.txt", "rb") as file:
         commands = load(file)
@@ -52,7 +62,7 @@ print("[kernel] INFO: boot process completed")
 
 # an motd would go well here
 
-print("\nWelcome to MicroflashOS Next!\n")
+print("\nWelcome to MicroflashOS Next - Ported to Python!\n")
 print("Available commands:", len(commands))
 print("Modules loaded:", len(mfos_modules))
 
